@@ -1,43 +1,37 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'http://localhost:8080'
+    baseURL: 'http://localhost:8081/'
 });
 
-export const cadastrarCategoria = async (dados: any, setDados: (arg0: any) => void) => {
-    const resposta = await api.post('/categorias', dados);
+export const buscar = async (
+    url: string,
+    setDados: Function,
+    header: Object
+  ) => {
+    const resposta = await api.get(url, header);
     setDados(resposta.data);
-};
-
-export const cadastrarProduto = async (dados: any, setDados: (arg0: any) => void) => {
-    const resposta = await api.post('/produtos', dados);
+  };
+  
+  export const cadastrar = async (
+    url: string,
+    dados: Object,
+    setDados: Function,
+    header: Object
+  ) => {
+    const resposta = await api.post(url, dados, header);
     setDados(resposta.data);
-};
-
-export const buscarCategorias = async (setDados: (arg0: any) => void, header: any) => {
-    const resposta = await api.get('/categorias', { headers: header });
+  };
+  
+  export const atualizar = async (
+    url: string,
+    dados: Object,
+    setDados: Function,
+    header: Object
+  ) => {
+    const resposta = await api.put(url, dados, header);
     setDados(resposta.data);
-};
-
-export const buscarProdutos = async (setDados: (arg0: any) => void, header: any) => {
-    const resposta = await api.get('/produtos', { headers: header });
-    setDados(resposta.data);
-};
-
-export const atualizarCategoria = async (url: string, dados: any, setDados: (arg0: any) => void, header: any) => {
-    const resposta = await api.put(url, dados, { headers: header });
-    setDados(resposta.data);
-};
-
-export const atualizarProduto = async (url: string, dados: any, setDados: (arg0: any) => void, header: any) => {
-    const resposta = await api.put(url, dados, { headers: header });
-    setDados(resposta.data);
-};
-
-export const deletarCategoria = async (url: string, header: any) => {
-    await api.delete(url, { headers: header });
-};
-
-export const deletarProduto = async (url: string, header: any) => {
-    await api.delete(url, { headers: header });
-};
+  };
+  export const deletar = async (url: string, header: Object) => {
+    await api.delete(url, header);
+  };
