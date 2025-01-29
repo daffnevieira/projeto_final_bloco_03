@@ -16,16 +16,18 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
+          <div className="min-h-[80vh]">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/listarcategorias" element={<ListaCategorias />} />
-            <Route path="/cadastrarcategorias" element={<FormCategorias />} />
-            <Route path="/editarcategorias/:id" element={<FormCategorias />} />
+            <Route path="/categorias" element={<ListaCategorias />} />
+            <Route path="/cadastrarcategoria" element={<FormCategoria />} />
+            <Route path="/editarcategorias/:id" element={<FormCategoria />} />
             <Route path="/deletarcategorias/:id" element={<DeletarCategoria />} />
-
-
+            
+             
           </Routes>
+        </div>
             
 
         <Footer />
